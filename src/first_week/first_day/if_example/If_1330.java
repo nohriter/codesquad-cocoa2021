@@ -1,4 +1,4 @@
-package first_week.first_day;
+package first_week.first_day.if_example;
 
 import java.io.BufferedReader;
 import java.io.IOException;
