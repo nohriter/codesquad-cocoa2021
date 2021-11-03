@@ -18,22 +18,6 @@ public class IndianNaming {
         System.out.printf("당신의 이름은 %s %s%s%n", birthday.getYear(), birthday.getMonth(), birthday.getDay());
     }
 
-    public List<Integer> parseBirth(String birth) {
-        String[] births = birth.split(" ");
-
-        int year = Integer.parseInt(births[0].substring(births[0].length() - 1));
-        int month = Integer.parseInt(births[1].substring(births[1].length() - 1));
-        int day = Integer.parseInt(births[2].substring(births[2].length() - 1));
-
-        List<Integer> birthList = new ArrayList<>();
-
-        birthList.add(year);
-        birthList.add(month);
-        birthList.add(day);
-
-        return birthList;
-    }
-
     public String inputBirth() {
         Scanner scanner = new Scanner(System.in);
 
