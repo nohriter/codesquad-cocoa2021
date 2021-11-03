@@ -1,4 +1,4 @@
-package first_week.first_day.loop_example;
+package week1.day1.loop_example;
 
 import java.util.Scanner;
 

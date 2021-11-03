@@ -1,4 +1,4 @@
-package first_week.first_day.star_example;
+package week1.day1.star_example;
 
 import java.util.Scanner;
 
