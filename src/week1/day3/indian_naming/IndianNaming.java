@@ -1,7 +1,5 @@
 package week1.day3.indian_naming;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class IndianNaming {
