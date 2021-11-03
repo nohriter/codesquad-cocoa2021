@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class If_9498 {
+public class IF9498 {
     public static void main(String[] args) throws IOException {
         int score = inputScore();
 

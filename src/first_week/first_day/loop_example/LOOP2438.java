@@ -2,7 +2,7 @@ package first_week.first_day.loop_example;
 
 import java.util.Scanner;
 
-public class Loop_2438 {
+public class LOOP2438 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
