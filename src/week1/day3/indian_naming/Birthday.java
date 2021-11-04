@@ -8,14 +8,12 @@ public class Birthday {
     private int month;
     private int day;
 
-    private Map<Integer, String> years;
-    private Map<Integer, String> months;
-    private Map<Integer, String> days;
+    private static Map<Integer, String> years;
+    private static Map<Integer, String> months;
+    private static Map<Integer, String> days;
 
-    public Birthday(String birth) {
-        parseBirth(birth);
-
-        createNamingRule();
+    public Birthday(PlayerInfo playerInfo) {
+        parseBirth(playerInfo);
     }
 
     public String getYear() {
@@ -30,15 +28,25 @@ public class Birthday {
         return days.get(day);
     }
 
-    public void parseBirth(String birth) {
-        String[] births = birth.split(" ");
+    public void parseBirth(PlayerInfo playerInfo) {
+        String lastCharOfYear = parseLastChar(playerInfo.getYear());
+        String lastCharOfMonth = parseLastChar(playerInfo.getMonth());
+        String lastCharOfDay = parseLastChar(playerInfo.getDay());
 
-        this.year = Integer.parseInt(births[0].substring(births[0].length() - 1));
-        this.month = Integer.parseInt(births[1].substring(births[1].length() - 1));
-        this.day = Integer.parseInt(births[2].substring(births[2].length() - 1));
+        this.year = parseInt(lastCharOfYear);
+        this.month = parseInt(lastCharOfMonth);
+        this.day = parseInt(lastCharOfDay);
     }
 
-    private void createNamingRule() {
+    private String parseLastChar(String info) {
+        return info.substring(info.length()-1);
+    }
+
+    private int parseInt(String info) {
+        return Integer.parseInt(info);
+    }
+
+    static {
         years = new HashMap<>();
 
         years.put(0, "시끄러운");
