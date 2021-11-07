@@ -1,4 +1,4 @@
-package week1.day1;
+package mission.week1.day1;
 
 import java.io.BufferedReader;
 import java.io.IOException;

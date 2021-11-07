@@ -1,4 +1,4 @@
-package week1.day3.indian_naming;
+package mission.week1.day3.indian_naming;
 
 public class PlayerInfo {
     private String year;

@@ -1,4 +1,4 @@
-package week1.day3.random_select;
+package mission.week1.day3.random_select;
 
 import java.io.IOException;
 

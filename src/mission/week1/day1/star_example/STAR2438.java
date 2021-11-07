@@ -1,15 +1,15 @@
-package week1.day1.loop_example;
+package mission.week1.day1.star_example;
 
 import java.util.Scanner;
 
-public class LOOP2438 {
+public class STAR2438 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int number = scanner.nextInt();
+        int count = scanner.nextInt();
 
-        for (int i = 0; i < number; i++) {
-            for (int j = 0; j < i+1; j++) {
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < i + 1; j++) {
                 System.out.print("*");
             }
             System.out.println();

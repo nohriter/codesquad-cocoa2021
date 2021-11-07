@@ -1,4 +1,4 @@
-package week1.day1.star_example;
+package mission.week1.day1.star_example;
 
 import java.io.BufferedReader;
 import java.io.IOException;
