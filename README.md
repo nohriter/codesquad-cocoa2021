@@ -36,4 +36,12 @@
 - 자바 기본 문법 복습
 - 백준 문제 풀이
 
+#### Day_06
+
+- 람다학습
+
+| 미션                       |  링크                           |
+| ------------------------- | ------------------------------ |
+| 가계부(일부 구현) | [링크](https://github.com/nohriter/codesquad-cocoa2021/tree/main/src/contents/week2/mission/accountbook)  |
+
 

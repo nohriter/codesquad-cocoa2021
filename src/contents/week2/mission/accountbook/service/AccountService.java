@@ -20,8 +20,6 @@ public class AccountService {
     public Long createAccount(AccountSaveRequestDto requestDto) {
         Account account = requestDto.toAccount(requestDto);
 
-        System.out.println("account = " + account);
-
         return accountRepository.create(account);
     }
 
