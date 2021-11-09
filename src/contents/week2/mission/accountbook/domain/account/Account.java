@@ -2,27 +2,17 @@ package contents.week2.mission.accountbook.domain.account;
 
 import contents.week2.mission.accountbook.dto.AccountUpdateRequestDto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Account {
     private Long id;
-    private Date date;
+
+    private LocalDate date;
     private String content;
     private Long income;
     private Long expense;
 
-    public Account() {
-    }
-
-    public Account(Date date, String content, Long income, Long expense) {
-        this.date = date;
-        this.content = content;
-        this.income = income;
-        this.expense = expense;
-    }
-
-    public Account(Long id, Date date, String content, Long income, Long expense) {
-        this.id = id;
+    public Account(LocalDate date, String content, Long income, Long expense) {
         this.date = date;
         this.content = content;
         this.income = income;
@@ -35,12 +25,16 @@ public class Account {
         this.expense = requestDto.getExpense();
     }
 
-    public Long getId() {
-        return id;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public Date getDate() {
-        return date;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getContent() {
@@ -53,5 +47,9 @@ public class Account {
 
     public Long getExpense() {
         return expense;
+    }
+
+    public boolean isEqualsBy(int month) {
+        return this.date.getMonthValue() == month;
     }
 }

@@ -5,14 +5,14 @@ import contents.week2.mission.accountbook.dto.AccountUpdateRequestDto;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AccountMemoryRepository {
+public class    AccountMemoryRepository {
     private static final Map<Long, Account> accounts = new HashMap<>();
     private Long id = 0L;
 
     public Long create(Account account) {
-        generateId();
+        account.setId(generateId());
 
-        accounts.put(id, account);
+        accounts.put(account.getId(), account);
 
         return id;
     }
