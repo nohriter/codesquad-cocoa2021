@@ -2,16 +2,18 @@ package contents.week2.mission.accountbook.service;
 
 import contents.week2.mission.accountbook.domain.account.Account;
 import contents.week2.mission.accountbook.domain.account.AccountMemoryRepository;
+import contents.week2.mission.accountbook.dto.AccountResponseDto;
 import contents.week2.mission.accountbook.dto.AccountSaveRequestDto;
 import contents.week2.mission.accountbook.dto.AccountUpdateRequestDto;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
 public class AccountService {
 
-    private final AccountMemoryRepository accountRepository;
+    private AccountMemoryRepository accountRepository;
 
     public AccountService(AccountMemoryRepository accountRepository) {
         this.accountRepository = accountRepository;
@@ -31,11 +33,18 @@ public class AccountService {
         return accountRepository.delete(id);
     }
 
-    public List<Account> getAccountByMonth() {
+    public List<AccountResponseDto> getAccountByMonth(int month) {
         Map<Long, Account> all = accountRepository.findAll();
+        Collection<Account> values = all.values();
 
-        List<Account> valueList = new ArrayList<>(all.values());
+        List<AccountResponseDto> responseAccountList = new ArrayList<>();
 
-        return valueList;
+        for(Account account : values) {
+            if(account.isEqualsBy(month)) {
+                responseAccountList.add(new AccountResponseDto(account));
+            }
+        }
+
+        return responseAccountList;
     }
 }

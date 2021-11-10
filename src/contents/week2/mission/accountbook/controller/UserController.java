@@ -7,20 +7,18 @@ import contents.week2.mission.accountbook.service.UserService;
 
 public class UserController {
 
-    private final contents.week2.mission.accountbook.service.UserService UserService;
+    private final UserService userService;
 
-    public UserController(UserService UserService) {
-        this.UserService = UserService;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     public Boolean save(UserSaveRequestDto requestDto) {
-        UserService.createUser(requestDto);
-
-        return true;
+        return userService.createUser(requestDto);
     }
 
-    public Boolean login(UserLoginRequestDto requestDto){
-        return UserService.login(requestDto);
+    public Boolean login(UserLoginRequestDto requestDto) {
+        return userService.login(requestDto);
     }
 
 }

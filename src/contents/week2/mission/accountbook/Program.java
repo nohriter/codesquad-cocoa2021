@@ -3,11 +3,16 @@ package contents.week2.mission.accountbook;
 import contents.week2.mission.accountbook.controller.AccountController;
 import contents.week2.mission.accountbook.controller.UserController;
 import contents.week2.mission.accountbook.domain.account.Account;
+import contents.week2.mission.accountbook.dto.AccountResponseDto;
 import contents.week2.mission.accountbook.dto.AccountSaveRequestDto;
+import contents.week2.mission.accountbook.dto.AccountUpdateRequestDto;
+import contents.week2.mission.accountbook.dto.UserLoginRequestDto;
 import contents.week2.mission.accountbook.dto.UserSaveRequestDto;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -19,31 +24,91 @@ public class Program {
     private static final UserController userController = appConfig.userController();
 
     public void run() throws ParseException {
-        printMainMenu();
+        selectMainMenu();
     }
 
-    private void printMainMenu() throws ParseException {
+    private void printMainMenu() {
         System.out.println("******************************");
         System.out.println("1.등록");
         System.out.println("2.로그인");
         System.out.println("3.종료");
         System.out.println("******************************");
+    }
 
-        String number = scanner.next();
+    //TODO: Enum 으로 변경하기
+    private void selectMainMenu() {
+        while (true) {
+            printMainMenu();
 
-        if (number.equals("3")) {
-            return;
+            switch (scanner.next()) {
+                case "1":
+                    if (createUser()) {
+                        selectSubMenu();
+                    }else {
+                        System.out.println("이미 사용중인 이름입니다.");
+                    }
+                    break;
+                case "2":
+                    if (login()) {
+                        selectSubMenu();
+                    } else {
+                        System.out.println("이름 또는 비밀번호를 확인하세요");
+                    }
+                    break;
+                case "3":
+                    System.out.println("프로그램을 종료합니다.");
+                    return;
+                default:
+                    System.out.println("올바른 메뉴를 선택해주세요.");
+            }
         }
+    }
 
-        if (number.equals("1")) {
-            createUser();
+    private void printSubMenu() {
+        System.out.println("==============");
+        System.out.println("1.가계부 등록");
+        System.out.println("2.가계부 수정");
+        System.out.println("3.가계부 삭제");
+        System.out.println("4.가계부 확인");
+        System.out.println("5.종료");
+        System.out.println("==============");
+    }
+
+    private void selectSubMenu() {
+        while (true) {
+            printSubMenu();
+
+            switch (scanner.next()) {
+                case "1":
+                    createAccount();
+                    break;
+                case "2":
+                    updateAccount();
+                    break;
+                case "3":
+                    deleteAccount();
+                    break;
+                case "4":
+                    printAccountsByMonth(inputMonth());
+                    break;
+                case "5":
+                    return;
+                default:
+                    System.out.println("올바른 메뉴를 선택해주세요.");
+            }
         }
+    }
 
-        if (login()) {
-            printSecondMenu();
-        }
+    // 로그인 및 회원가입
+    private Boolean login() {
+        System.out.println("이름을 입력해주세요.");
+        String name = scanner.next();
+        System.out.println("비밀번호를 입력해주세요.");
+        String password = scanner.next();
 
-        System.out.println("프로그램을 종료합니다.");
+        UserLoginRequestDto requestDto = new UserLoginRequestDto(name, password);
+
+        return userController.login(requestDto);
     }
 
     private Boolean createUser() {
@@ -57,81 +122,65 @@ public class Program {
         return userController.save(requestDto);
     }
 
-    private void printSecondMenu() throws ParseException {
-        while (true) {
-            System.out.println("******************************");
-            System.out.println("1.가계부 등록");
-            System.out.println("2.가계부 수정");
-            System.out.println("3.가계부 삭제");
-            System.out.println("4.가계부 확인");
-            System.out.println("5.종료");
-            System.out.println("******************************");
-            String number = scanner.next();
-
-            switch (number) {
-                case "1":
-                    createAccount();
-                    break;
-                case "2":
-                    updateAccount();
-                    break;
-                case "3":
-                    deleteAccount();
-                    break;
-                case "4":
-                    confirmAccount();
-                    break;
-                case "5":
-                    return;
-            }
-        }
-    }
-
-    private void confirmAccount() {
-        List<Account> accounts = accountController.printMonthList();
-
-        for(Account a : accounts) {
-            SimpleDateFormat newDtFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-            String strNewDtFormat = newDtFormat.format(a.getDate());
-
-            System.out.println("날짜: "+strNewDtFormat+
-                    "내용: "+a.getContent()+
-                    "수입: "+a.getIncome()+
-                    "지출: "+a.getExpense()+
-                    "잔액: "+(a.getIncome() - a.getExpense()));
-        }
-
-    }
-
-    private void deleteAccount() {
-
-    }
-
-    private void updateAccount() {
-
-    }
-
-    private void createAccount() throws ParseException {
+    // 가계부
+    private void createAccount() {
         System.out.println("날짜를 입력하세요 ex.2020-12-25");
-        String date = scanner.next();
-        System.out.println("적요를 입력하세요");
+        String inputDate = scanner.next();
+        System.out.println("내용을 입력하세요");
         String content = scanner.next();
         System.out.println("수입을 입력하세요");
         Long income = scanner.nextLong();
         System.out.println("지출을 입력하세요");
         Long expense = scanner.nextLong();
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDate accountDate = LocalDate.parse(inputDate, DateTimeFormatter.ISO_DATE);
 
-        Date parseDate = simpleDateFormat.parse(date);
-
-        AccountSaveRequestDto requestDto = new AccountSaveRequestDto(parseDate, content, income, expense);
-
+        AccountSaveRequestDto requestDto = new AccountSaveRequestDto(accountDate, content, income, expense);
         accountController.save(requestDto);
     }
 
-    public Boolean login() {
+    private Boolean updateAccount() {
+        System.out.println("수정할 번호를 입력하세요");
+        Long accountId = Long.parseLong(scanner.next());
+        System.out.println("날짜를 입력하세요 ex.2020-12-25");
+        String inputDate = scanner.next();
+        System.out.println("내용을 입력하세요");
+        String content = scanner.next();
+        System.out.println("수입을 입력하세요");
+        Long income = scanner.nextLong();
+        System.out.println("지출을 입력하세요");
+        Long expense = scanner.nextLong();
 
+        LocalDate accountDate = LocalDate.parse(inputDate, DateTimeFormatter.ISO_DATE);
+
+        AccountUpdateRequestDto requestDto = new AccountUpdateRequestDto(accountDate, content, income, expense);
+
+        return accountController.update(accountId - 1, requestDto);
+    }
+
+    private void deleteAccount() {
+        System.out.println("삭제할 번호를 입력하세요");
+        Long accountId = Long.parseLong(scanner.next());
+
+        accountController.delete(accountId);
+    }
+
+    private int inputMonth() {
+        System.out.println("원하는 달을 입력해주세요. ex.12");
+        return Integer.parseInt(scanner.next());
+    }
+
+    private void printAccountsByMonth(int month) {
+        List<AccountResponseDto> accounts = accountController.printAccountsByMonth(month);
+
+        for (AccountResponseDto account : accounts) {
+            System.out.printf("%s.날짜: %s\t내용: %s\t수입: %d\t지출: %d\t잔액: %d%n",
+                    account.getId() + 1,
+                    account.getDate(),
+                    account.getContent(),
+                    account.getIncome(),
+                    account.getExpense(),
+                    account.getIncome() - account.getExpense());
+        }
     }
 }

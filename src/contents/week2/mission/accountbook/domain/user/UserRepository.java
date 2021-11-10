@@ -1,6 +1,9 @@
 package contents.week2.mission.accountbook.domain.user;
 
 public interface UserRepository {
-    Long save(User user);
+    Boolean save(User user);
 
+    Boolean existByName(String name);
+
+    User findByName(String name);
 }

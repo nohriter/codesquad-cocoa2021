@@ -1,6 +1,7 @@
 package contents.week2.mission.accountbook.controller;
 
 import contents.week2.mission.accountbook.domain.account.Account;
+import contents.week2.mission.accountbook.dto.AccountResponseDto;
 import contents.week2.mission.accountbook.dto.AccountSaveRequestDto;
 import contents.week2.mission.accountbook.dto.AccountUpdateRequestDto;
 import contents.week2.mission.accountbook.service.AccountService;
@@ -19,15 +20,17 @@ public class AccountController {
         return accountService.createAccount(requestDto);
     }
 
-    public Long update(Long id, AccountUpdateRequestDto requestDto) {
-        return accountService.updateAccount(id, requestDto);
+    public Boolean update(Long id, AccountUpdateRequestDto requestDto) {
+        accountService.updateAccount(id, requestDto);
+
+        return true;
     }
 
     public Long delete(Long id) {
         return accountService.deleteAccount(id);
     }
 
-    public List<Account> printMonthList() {
-        return accountService.getAccountByMonth();
+    public List<AccountResponseDto> printAccountsByMonth(int month) {
+        return accountService.getAccountByMonth(month);
     }
 }

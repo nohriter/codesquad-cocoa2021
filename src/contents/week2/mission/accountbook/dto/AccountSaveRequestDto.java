@@ -2,17 +2,17 @@ package contents.week2.mission.accountbook.dto;
 
 import contents.week2.mission.accountbook.domain.account.Account;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class AccountSaveRequestDto {
-    private Date date;
+    private LocalDate date;
     private String content;
     private Long income;
     private Long expense;
 
     public Account toAccount(AccountSaveRequestDto requestDto) {
         return new Account(
-                requestDto.getDate(),
+                requestDto.getLocalDate(),
                 requestDto.getContent(),
                 requestDto.getIncome(),
                 requestDto.getExpense()
@@ -23,14 +23,14 @@ public class AccountSaveRequestDto {
     public AccountSaveRequestDto() {
     }
 
-    public AccountSaveRequestDto(Date date, String content, Long income, Long expense) {
+    public AccountSaveRequestDto(LocalDate date, String content, Long income, Long expense) {
         this.date = date;
         this.content = content;
         this.income = income;
         this.expense = expense;
     }
 
-    public Date getDate() {
+    public LocalDate getLocalDate() {
         return date;
     }
 
