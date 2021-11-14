@@ -2,18 +2,17 @@ package contents.week2.mission.accountbook;
 
 import contents.week2.mission.accountbook.controller.AccountController;
 import contents.week2.mission.accountbook.controller.UserController;
+import contents.week2.mission.accountbook.domain.AccountContent;
 import contents.week2.mission.accountbook.domain.account.Account;
+import contents.week2.mission.accountbook.domain.user.User;
 import contents.week2.mission.accountbook.dto.AccountResponseDto;
 import contents.week2.mission.accountbook.dto.AccountSaveRequestDto;
 import contents.week2.mission.accountbook.dto.AccountUpdateRequestDto;
 import contents.week2.mission.accountbook.dto.UserLoginRequestDto;
 import contents.week2.mission.accountbook.dto.UserSaveRequestDto;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,7 +22,7 @@ public class Program {
     private static final AccountController accountController = appConfig.accountController();
     private static final UserController userController = appConfig.userController();
 
-    public void run() throws ParseException {
+    public void run() {
         selectMainMenu();
     }
 
@@ -42,15 +41,19 @@ public class Program {
 
             switch (scanner.next()) {
                 case "1":
-                    if (createUser()) {
-                        selectSubMenu();
-                    }else {
+                    UserLoginRequestDto saveRequestDto = inputUserInfo();
+                    if (isValidLoginInfo(saveRequestDto)) {
+                        User user = createUser(saveRequestDto);
+                        selectSubMenu(user);
+                    } else {
                         System.out.println("이미 사용중인 이름입니다.");
                     }
                     break;
                 case "2":
-                    if (login()) {
-                        selectSubMenu();
+                        UserLoginRequestDto loginRequestDto = inputUserInfo();
+                    if (isValidLoginInfo(loginRequestDto)) {
+                        User user = login(loginRequestDto);
+                        selectSubMenu(user);
                     } else {
                         System.out.println("이름 또는 비밀번호를 확인하세요");
                     }
@@ -64,6 +67,10 @@ public class Program {
         }
     }
 
+    private User login(UserLoginRequestDto loginRequestDto) {
+        return userController.login(loginRequestDto);
+    }
+
     private void printSubMenu() {
         System.out.println("==============");
         System.out.println("1.가계부 등록");
@@ -74,13 +81,13 @@ public class Program {
         System.out.println("==============");
     }
 
-    private void selectSubMenu() {
+    private void selectSubMenu(User user) {
         while (true) {
             printSubMenu();
 
             switch (scanner.next()) {
                 case "1":
-                    createAccount();
+                    createAccount(user);
                     break;
                 case "2":
                     updateAccount();
@@ -99,19 +106,23 @@ public class Program {
         }
     }
 
-    // 로그인 및 회원가입
-    private Boolean login() {
+    private UserLoginRequestDto inputUserInfo() {
         System.out.println("이름을 입력해주세요.");
         String name = scanner.next();
         System.out.println("비밀번호를 입력해주세요.");
         String password = scanner.next();
 
-        UserLoginRequestDto requestDto = new UserLoginRequestDto(name, password);
-
-        return userController.login(requestDto);
+        return new UserLoginRequestDto(name, password);
     }
 
-    private Boolean createUser() {
+    // 로그인 및 회원가입
+    //TODO: 유효성검사
+    private Boolean isValidLoginInfo(UserLoginRequestDto requestDto) {
+
+        return userController.loginInfoCheck(requestDto);
+    }
+
+    private User createUser(UserLoginRequestDto userLoginRequestDto) {
         System.out.println("이름을 입력해주세요.");
         String name = scanner.next();
         System.out.println("비밀번호를 입력해주세요.");
@@ -123,7 +134,7 @@ public class Program {
     }
 
     // 가계부
-    private void createAccount() {
+    private void createAccount(User user) {
         System.out.println("날짜를 입력하세요 ex.2020-12-25");
         String inputDate = scanner.next();
         System.out.println("내용을 입력하세요");
@@ -134,8 +145,10 @@ public class Program {
         Long expense = scanner.nextLong();
 
         LocalDate accountDate = LocalDate.parse(inputDate, DateTimeFormatter.ISO_DATE);
+        Account account = user.getAccount();
 
         AccountSaveRequestDto requestDto = new AccountSaveRequestDto(accountDate, content, income, expense);
+
         accountController.save(requestDto);
     }
 

@@ -13,9 +13,6 @@ public class UserSaveRequestDto {
         );
     }
 
-    public UserSaveRequestDto() {
-    }
-
     public UserSaveRequestDto(String name, String password) {
         this.name = name;
         this.password = password;

@@ -2,31 +2,26 @@ package contents.week2.mission.accountbook.service;
 
 import contents.week2.mission.accountbook.domain.user.User;
 import contents.week2.mission.accountbook.domain.user.UserMemoryRepository;
+import contents.week2.mission.accountbook.domain.user.UserRepository;
 import contents.week2.mission.accountbook.dto.UserLoginRequestDto;
 import contents.week2.mission.accountbook.dto.UserSaveRequestDto;
 
-import java.util.Collection;
-
 public class UserService {
 
-    private final UserMemoryRepository userMemoryRepository;
+    private final UserRepository userMemoryRepository;
 
     public UserService(UserMemoryRepository userMemoryRepository) {
         this.userMemoryRepository = userMemoryRepository;
     }
 
-    public Boolean createUser(UserSaveRequestDto requestDto) {
+    public User createUser(UserSaveRequestDto requestDto) {
         User user = requestDto.toUser(requestDto);
-
-        if (existByName(requestDto.getName())) {
-            return false;
-        }
 
         return userMemoryRepository.save(user);
     }
 
-    public Boolean login(UserLoginRequestDto requestDto) {
-        return isValidLoginInfo(requestDto);
+    public User login(UserLoginRequestDto requestDto) {
+        return userMemoryRepository.findByName(requestDto.getName());
     }
 
     public Boolean isValidLoginInfo(UserLoginRequestDto requestDto) {

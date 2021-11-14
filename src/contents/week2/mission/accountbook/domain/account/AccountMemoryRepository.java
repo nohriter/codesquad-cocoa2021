@@ -1,28 +1,29 @@
 package contents.week2.mission.accountbook.domain.account;
 
+import contents.week2.mission.accountbook.domain.AccountContent;
 import contents.week2.mission.accountbook.dto.AccountUpdateRequestDto;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class    AccountMemoryRepository {
-    private static final Map<Long, Account> accounts = new HashMap<>();
+public class AccountMemoryRepository {
+    private static final Map<Long, AccountContent> accountContents = new HashMap<>();
     private Long id = 0L;
 
-    public Long create(Account account) {
-        account.setId(generateId());
+    public Long create(AccountContent accountContent) {
+        accountContent.setId(generateId());
 
-        accounts.put(account.getId(), account);
+        accountContents.put(accountContent.getId(), accountContent);
 
         return id;
     }
 
     public Long update(Long id, AccountUpdateRequestDto requestDto) {
-        Account account = findById(id);
+        AccountContent accountContent = findById(id);
 
-        account.update(requestDto);
+        accountContent.update(requestDto);
 
-        accounts.replace(id, account);
+        accountContents.replace(id, accountContent);
 
         return id;
     }
@@ -30,21 +31,21 @@ public class    AccountMemoryRepository {
     public Long delete(Long id) {
         findById(id);
 
-        accounts.remove(id);
+        accountContents.remove(id);
 
         return id;
     }
 
-    public Map<Long, Account> findAll() {
-        return accounts;
+    public Map<Long, AccountContent> findAll() {
+        return accountContents;
     }
 
-    public Account findById(Long id) {
-        if (accounts.get(id) == null) {
+    public AccountContent findById(Long id) {
+        if (accountContents.get(id) == null) {
             throw new IllegalArgumentException("해당 가계부 정보가 없습니다. id = " + id);
         }
 
-        return accounts.get(id);
+        return accountContents.get(id);
     }
 
     public synchronized Long generateId() {

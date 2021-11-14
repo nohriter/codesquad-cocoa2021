@@ -1,6 +1,6 @@
 package contents.week2.mission.accountbook.dto;
 
-import contents.week2.mission.accountbook.domain.account.Account;
+import contents.week2.mission.accountbook.domain.AccountContent;
 
 import java.time.LocalDate;
 
@@ -31,11 +31,11 @@ public class AccountResponseDto {
         return expense;
     }
 
-    public AccountResponseDto(Account account){
-        this.id = account.getId();
-        this.date = account.getDate();
-        this.content = account.getContent();
-        this.income = account.getIncome();
-        this.expense = account.getExpense();
+    public AccountResponseDto(AccountContent accountContent) {
+        this.id = accountContent.getId();
+        this.date = accountContent.getDate();
+        this.content = accountContent.getContent();
+        this.income = accountContent.getIncome();
+        this.expense = accountContent.getExpense();
     }
 }

@@ -1,6 +1,5 @@
 package contents.week2.mission.accountbook.controller;
 
-import contents.week2.mission.accountbook.domain.account.Account;
 import contents.week2.mission.accountbook.dto.AccountResponseDto;
 import contents.week2.mission.accountbook.dto.AccountSaveRequestDto;
 import contents.week2.mission.accountbook.dto.AccountUpdateRequestDto;
