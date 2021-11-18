@@ -6,19 +6,19 @@
 - [ ] 학습기록 남기기
 - [ ] 몸 관리 잘하기
 
-#### Day_06
+#### Day_11
 
 - [커널과 쉘](https://bold-antimatter-94b.notion.site/8e79ec58d5e74aaeb52afc155c12e124)
 - [프로세스(process)와 쓰레드(thread)](https://bold-antimatter-94b.notion.site/process-thread-06b5e7f8c7f040a7b9b74653e01b6bde)
 
 
-#### Day_07
+#### Day_12
 
 - 한글시계 구현 [링크](https://github.com/nohriter/hangul-clock)
 - HashMap, HashTable, concurrenthashmap 학습
 - 컴퓨터 조립영상 시청
 
-#### Day_08
+#### Day_13
 
 - 추가 달력 구현 [링크](https://github.com/nohriter/hangul-clock)
     - 스레드를 구현 하지 못함.
