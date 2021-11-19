@@ -1,8 +1,7 @@
 # 📘 코드스쿼드 코코아 (2021.11.01 ~ 2021.12.02)
 
 ### 코드스쿼드 코코아 과정 학습 내용을 정리하는 공간입니다.
-
-<br>
+### 🌙 [일일회고](https://github.com/nohriter/TIL)  💡 [알고리즘](https://github.com/nohriter/Algorithm)
 
 # 🌱 1주차
 
@@ -31,7 +30,7 @@
 
 # 🍀 3주차
 
-### 💭 주간회고
+### 💭 [주간회고](https://github.com/nohriter/TIL/blob/main/21.11/211119.md)
 ### 📚 [학습내역](https://github.com/nohriter/codesquad-cocoa2021/tree/main/src/contents/week3)
 
 
@@ -42,7 +41,6 @@
 
 <br>
 
----
 
-### 🌙 [일일회고](https://github.com/nohriter/TIL)  💡 [알고리즘](https://github.com/nohriter/Algorithm)
+
 
