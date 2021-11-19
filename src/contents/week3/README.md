@@ -2,9 +2,9 @@
 
 ### 3주차 목표
 
-- [ ] 그날 할 일 완수하기
-- [ ] 학습기록 남기기
-- [ ] 몸 관리 잘하기
+- 그날 할 일 완수하기
+- 학습기록 남기기
+- 몸 관리 잘하기
 
 #### Day_11
 
@@ -23,3 +23,13 @@
 - 추가 달력 구현 [링크](https://github.com/nohriter/hangul-clock)
     - 스레드를 구현 하지 못함.
 - [java.time 패키지 학습](https://bold-antimatter-94b.notion.site/Java-8-eff721fa8cc747688a7a952ac0c857d8)
+
+#### Day_14
+
+- [추상메서드와 인터페이스 공부](https://bold-antimatter-94b.notion.site/e747b24a96fa4440ba6692e492262bdc)
+- 스레드 학습 중
+
+#### Day_15
+
+- [해커랭크 알고리즘 풀기](https://github.com/nohriter/Algorithm/tree/main/src/hackerrank)
+- [초간단? RPG 게임 구현중](https://github.com/nohriter/Hard-RPG)
