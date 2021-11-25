@@ -1,4 +1,4 @@
-package contents.week4.study;
+package contents.week4.study.timer;
 
 import java.util.Timer;
 import java.util.TimerTask;
