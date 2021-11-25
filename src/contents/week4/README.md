@@ -22,3 +22,9 @@
 
 - 그림판 사각형 기능 [링크](https://github.com/nohriter/PaintBrush)
 - 프로그래머스 알고리즘 한 문제
+
+#### Day_19
+
+- [스트림 책 보며 정리](https://bold-antimatter-94b.notion.site/ea165cb880fc4e8e91034c2957541b0e)
+- [타이머 정리](https://bold-antimatter-94b.notion.site/Java-util-Timer-8f09905b5b9d4b2089c2ed4422620a1d)
+- 프로그래머스 알고리즘 쉬운 3문제
