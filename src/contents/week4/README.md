@@ -20,5 +20,5 @@
 
 #### Day_18
 
-- 그림판 사각형 기능 [링크](그림판 사각형 기능 [링크](https://github.com/nohriter/PaintBrush))
+- 그림판 사각형 기능 [링크](https://github.com/nohriter/PaintBrush)
 - 프로그래머스 알고리즘 한 문제
