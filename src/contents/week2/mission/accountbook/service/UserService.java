@@ -14,30 +14,30 @@ public class UserService {
         this.userMemoryRepository = userMemoryRepository;
     }
 
-    public User createUser(UserSaveRequestDto requestDto) {
-        User user = requestDto.toUser(requestDto);
+//    public User createUser(UserSaveRequestDto requestDto) {
+//        User user = requestDto.toUser(requestDto);
+//
+//        return userMemoryRepository.save(user);
+//    }
 
-        return userMemoryRepository.save(user);
-    }
+//    public User login(UserLoginRequestDto requestDto) {
+//        return userMemoryRepository.findByName(requestDto);
+//    }
 
-    public User login(UserLoginRequestDto requestDto) {
-        return userMemoryRepository.findByName(requestDto.getName());
-    }
-
-    public Boolean isValidLoginInfo(UserLoginRequestDto requestDto) {
-        try {
-            User user = userMemoryRepository.findByName(requestDto.getName());
-
-            if (requestDto.getPassword().equals(user.getPassword())) {
-                return true;
-            }
-
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-
-        return false;
-    }
+//    public Boolean isValidLoginInfo(UserLoginRequestDto requestDto) {
+//        try {
+//            User user = userMemoryRepository.findByName();
+//
+//            if (requestDto.getPassword().equals(user.getPassword())) {
+//                return true;
+//            }
+//
+//        } catch (IllegalArgumentException e) {
+//            return false;
+//        }
+//
+//        return false;
+//    }
 
     private boolean existByName(String name) {
         return userMemoryRepository.existByName(name);

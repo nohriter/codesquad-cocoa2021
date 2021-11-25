@@ -24,7 +24,7 @@ public class AccountService {
     public Long createAccount(AccountSaveRequestDto requestDto) {
         AccountContent accountContent = requestDto.toAccount(requestDto);
 
-        return accountRepository.create(accountContent);
+        return null;
     }
 
     public Long updateAccount(Long id, AccountUpdateRequestDto requestDto) {
@@ -35,18 +35,18 @@ public class AccountService {
         return accountRepository.delete(id);
     }
 
-    public List<AccountResponseDto> getAccountByMonth(int month) {
-        Map<Long, AccountContent> all = accountRepository.findAll();
-        Collection<AccountContent> values = all.values();
-
-        List<AccountResponseDto> responseAccountList = new ArrayList<>();
-
-        for (AccountContent accountContent : values) {
-            if (accountContent.isEqualsBy(month)) {
-                responseAccountList.add(new AccountResponseDto(accountContent));
-            }
-        }
-
-        return responseAccountList;
-    }
+//    public List<AccountResponseDto> getAccountByMonth(int month) {
+//        Map<Long, AccountContent> all = accountRepository.findAll();
+//        Collection<AccountContent> values = all.values();
+//
+//        List<AccountResponseDto> responseAccountList = new ArrayList<>();
+//
+//        for (AccountContent accountContent : values) {
+//            if (accountContent.isEqualsBy(month)) {
+//                responseAccountList.add(new AccountResponseDto(accountContent));
+//            }
+//        }
+//
+//        return responseAccountList;
+//    }
 }
