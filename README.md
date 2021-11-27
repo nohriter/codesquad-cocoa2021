@@ -43,7 +43,7 @@
 
 # 🍁 4주차
 
-### 💭 주간회고
+### 💭 [주간회고](https://github.com/nohriter/TIL/blob/main/21.11/211126.md)
 ### 📚 [학습내역](https://github.com/nohriter/codesquad-cocoa2021/tree/main/src/contents/week4)
 
 
