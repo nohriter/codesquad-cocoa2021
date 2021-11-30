@@ -52,6 +52,17 @@
 - 학습 50% 코딩 50%
 - 학습정리 잘하기
 
+<br>
+
+# 🍂 5주차
+### 👋 Good Bye Cocoa
+### 💭 주간회고
+### 📚 [학습내역](https://github.com/nohriter/codesquad-cocoa2021/tree/main/src/contents/week5)
+
+#### 주간목표
+- 1일 2 알고리즘
+- 프로젝트 잘 진행하기
+- 코코아와 헤어질 준비하기
 
 
 
