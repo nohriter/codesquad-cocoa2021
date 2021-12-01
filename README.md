@@ -1,7 +1,7 @@
 # 📘 코드스쿼드 코코아 (2021.11.01 ~ 2021.12.02)
 
 ### 코드스쿼드 코코아 과정 학습 내용을 정리하는 공간입니다.
-### 🌙 [일일회고](https://github.com/nohriter/TIL)  💡 [알고리즘](https://github.com/nohriter/Algorithm)
+### 🌙 [일일회고](https://github.com/nohriter/TIL)  💡 [알고리즘](https://github.com/nohriter/Algorithm) 👨‍💻 [프로젝트](https://github.com/nohriter/What-eat-today)
 
 # 🌱 1주차
 
