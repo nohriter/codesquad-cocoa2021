@@ -55,8 +55,7 @@
 <br>
 
 # 🍂 5주차
-### 👋 Good Bye Cocoa
-### 💭 주간회고
+### 👋 [Good Bye Cocoa](https://github.com/nohriter/TIL/blob/main/21.12/211202.md)
 ### 📚 [학습내역](https://github.com/nohriter/codesquad-cocoa2021/tree/main/src/contents/week5)
 
 #### 주간목표
